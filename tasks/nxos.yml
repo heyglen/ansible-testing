@@ -1,0 +1,16 @@
+---
+- hosts: switches
+  tasks:
+  - name: activate virtualenv
+    shell: |
+      source /home/ghar/.virtual_environments/ansible/bin/activate
+
+  - name: get device facts
+    napalm_get_facts:
+      hostname={{ inventory_hostname }}
+      username={{ user }}
+      dev_os={{ os }}
+      password={{ passwd }}
+      filter='facts,interfaces'
+    register: result
+ 

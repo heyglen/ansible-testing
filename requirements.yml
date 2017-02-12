@@ -1,0 +1,4 @@
+- name: napalm
+  src: https://github.com/napalm-automation/napalm-ansible/
+  version: master
+  path: roles

@@ -45,11 +45,9 @@
 
 switch01 ansible_host=10.10.20.58
 
-[switches]
-switch01
 
-[switches:vars]
-ansible_connection=paramiko
-user=admin
-passwd=cisco123
-os=nxos
+[network:children]
+nxos
+
+[nxos]
+switch01

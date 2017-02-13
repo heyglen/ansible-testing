@@ -1,0 +1,7 @@
+---
+- name: show version
+  nxos_command:
+    provider: "{{provider}}"
+    commands:
+      - command: show version
+        output: text

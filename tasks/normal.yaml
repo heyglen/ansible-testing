@@ -1,0 +1,5 @@
+---
+- hosts: network
+  connection: local
+  roles:
+    - network

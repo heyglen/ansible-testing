@@ -1,0 +1,5 @@
+---
+
+# - name: activate virtualenv
+#   shell: |
+#     source /home/ghar/.virtual_environments/ansible/bin/activate

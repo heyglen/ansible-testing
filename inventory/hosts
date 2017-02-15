@@ -43,11 +43,13 @@
 
 #db-[99:101]-node.example.com
 
+
+[nxos]
 switch01 ansible_host=10.10.20.58
 
 
 [network:children]
 nxos
 
-[nxos]
-switch01
+[common:children]
+nxos

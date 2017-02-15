@@ -1,0 +1,7 @@
+---
+
+- hosts: nxos
+  roles:
+    - common
+    - network
+    - nxos

@@ -5,24 +5,22 @@
 #     gather_subset:
 #       - config
 
-- name: get hostname
+- name: Get Hostname
   register: configured_hostname
+  no_log: True
   nxos_command:
     provider: "{{ provider }}"
     commands: show run | include ^hostname
     # save: yes
 
-- name: Configured hostname
-  debug:
-    msg: "Configured hostname: {{ configured_hostname }}"
+# - name: Configured hostname
+#   debug:
+#     msg: "Configured hostname: {{ configured_hostname }}"
 
-- set_fact: configured_hostname="{{ configured_hostname.stdout | join('') | regex_replace('\\S+\\s+(\\S+)', '\\1') | replace('\n', '') }}"
+- name: "Fact: Configured Hostname"
+  set_fact: configured_hostname="{{ configured_hostname.stdout | join('') | regex_replace('\\S+\\s+(\\S+)', '\\1') | replace('\n', '') }}"
+  no_log: True
 
-- name: Invalid hostname
-  when: configured_hostname != inventory_hostname
-  debug:
-    msg: " Hostname changed: {{ inventory_hostname }} -> {{ configured_hostname }}"
-  
 
 - name: hostname
   when: configured_hostname != inventory_hostname

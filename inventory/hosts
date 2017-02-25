@@ -45,7 +45,10 @@
 
 
 [nxos]
-switch01 ansible_host=10.10.20.58
+nx-osv-1 ansible_host=172.16.1.90
+nx-osv-2 ansible_host=172.16.1.91
+nx-osv-3 ansible_host=172.16.1.92
+nx-osv-4 ansible_host=172.16.1.93
 
 
 [network:children]

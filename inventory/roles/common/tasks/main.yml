@@ -1,5 +1,7 @@
 ---
 
-# - name: activate virtualenv
-#   shell: |
-#     source /home/ghar/.virtual_environments/ansible/bin/activate
+# - name: set hostname
+#   iosxr_config:
+#     procvider: "{{ provider }}"
+#     lines: hostname {{ inventory_hostname }}
+#     save: yes

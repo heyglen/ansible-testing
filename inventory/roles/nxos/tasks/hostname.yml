@@ -1,7 +1,33 @@
 ---
 
+# - nxos_facts:
+#     provider: "{{ provider }}"
+#     gather_subset:
+#       - config
+
+- name: get hostname
+  register: configured_hostname
+  nxos_command:
+    provider: "{{ provider }}"
+    commands: show run | include ^hostname
+    # save: yes
+
+- name: Configured hostname
+  debug:
+    msg: "Configured hostname: {{ configured_hostname }}"
+
+- set_fact: configured_hostname="{{ configured_hostname.stdout | join('') | regex_replace('\\S+\\s+(\\S+)', '\\1') | replace('\n', '') }}"
+
+- name: Invalid hostname
+  when: configured_hostname != inventory_hostname
+  debug:
+    msg: " Hostname changed: {{ inventory_hostname }} -> {{ configured_hostname }}"
+  
+
 - name: hostname
+  when: configured_hostname != inventory_hostname
+  # when: ansible_net_hostname == inventory_hostname
   nxos_config:
     provider: "{{ provider }}"
-    lines: hostname {{ inventory_hostame }}
+    lines: hostname {{ inventory_hostname }}
     save: yes

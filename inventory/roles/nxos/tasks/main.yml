@@ -1,7 +1,6 @@
 ---
 
-- name: set the hostname
-  nxos_config:
-    provider: "{{ provider }}"
-    lines: hostname {{ inventory_hostname }}
-    save: yes
+# https://cloudrkt.com/roles-like-a-boss.html#tasks_1
+
+- include: hostname.yml
+- include: dns.yml

@@ -1,0 +1,12 @@
+---
+
+- name: set domain name
+  nxos_config:
+    provider: "{{ provider }}"
+    lines: ip domain-name {{ dns.domain }}
+
+# - name: show domain name
+#   nxos_command:
+#     provider: "{{ provider }}"
+#     commands: show run | i "ip domain-name"
+#     # save: yes

@@ -1,5 +1,6 @@
 ---
 
 dns:
+  domain: example.com
   servers:
     - "4.2.2.2"

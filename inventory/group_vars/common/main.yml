@@ -1,3 +1,4 @@
 ---
-ansible_user: admin
-ansible_pass: cisco123
+ansible_user: cisco
+ansible_pass: cisco
+domain_name: example.com
